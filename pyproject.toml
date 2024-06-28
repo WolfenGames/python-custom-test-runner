@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling","junit_xml"]
+build-backend="hatchling.build"
+
+[project]
+name = "XrayTestRunner"
+version = "0.0.1"
+authors = [
+	{ name = "JulianWolf", email="" }
+]
+description = "A Custom XrayTestRunner for python packages to produce output needed"
+readme = "README.md"
+requires = ">=3.9"
+classifiers = [
+	"Programming Language :: Python :: 3",
+	"License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+	"Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/WolfenGames/python-custom-test-runner"
+Issues = "https://github.com/WolfenGames/python-custom-test-runner/issues"
