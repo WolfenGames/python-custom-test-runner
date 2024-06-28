@@ -1,7 +1,7 @@
 import unittest
 import datetime
 from junit_xml import TestSuite
-from XrayTestRunner import XrayTestResult 
+from XrayTestRunner.XrayTestResult import XrayTestResult
 import os
 
 class XrayTestRunner(unittest.TextTestRunner):
