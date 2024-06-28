@@ -5,10 +5,10 @@ from XrayTestRunner.XrayTestResult import XrayTestResult
 import os
 
 class XrayTestRunner(unittest.TextTestRunner):
-	def __init__(self, *args, **kwargs) -> None:
+	def __init__(self, file_path=None, *args, **kwargs) -> None:
 		super().__init__(*args, **kwargs)
 		self.resultclass=XrayTestResult
-		self.file_path=kwargs.get('file_path', './tests/')
+		self.file_path=file_path if file_path else './tests/'
 	
 	def run(self, test: unittest.TestSuite, **kwargs):
 		result=super().run(test, **kwargs)
