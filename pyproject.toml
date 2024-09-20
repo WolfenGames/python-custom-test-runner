@@ -2,9 +2,17 @@
 requires = ["hatchling","junit_xml"]
 build-backend="hatchling.build"
 
+[tool.hatch.build.targets.sdist]
+include = [
+  "XrayTestRunner/*.py",
+]
+
+[tool.hatch.build]
+reproducible = true
+
 [project]
 name = "XrayTestRunner"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
 	{ name = "JulianWolf", email="" }
 ]

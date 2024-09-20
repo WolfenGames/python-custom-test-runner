@@ -20,7 +20,7 @@ class XrayTestRunner(unittest.TextTestRunner):
 		timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
 
 		try:
-			os.makedirs(self.file_path)
+			os.makedirs(self.file_path, exist_ok=True)
 		except FileExistsError:
 			pass
 

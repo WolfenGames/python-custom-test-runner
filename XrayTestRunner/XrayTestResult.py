@@ -1,6 +1,8 @@
 from typing import TextIO
 import unittest
 from junit_xml import TestCase
+import os
+import json
 
 class XrayTestResult(unittest.TextTestResult):
 	
@@ -31,12 +33,25 @@ class XrayTestResult(unittest.TextTestResult):
 
 		# get first line from the docstring of the test
 		docstring=test._testMethodDoc
-		if docstring:
-			docstring=docstring.strip().split('\n')[0]
-		else:
-			docstring=test_name
+		docstring=docstring.strip().split('\n')[0] if docstring else test_name
+
+		stdout=[]
+
+
+		if test.inputRequest is not None:
+			stdout.append(test.inputRequest)
+		if test.output is not None:
+			stdout.append(test.output)
+
+		try:
+			os.makedirs(f"./tests/output", exist_ok=True)
+		except FileExistsError:
+			pass
+
+		with open(f"./tests/output/{docstring}.json", 'w') as f:
+			f.write(json.dumps(stdout, indent=4))
 
 		try: 
-			return TestCase(name=docstring, status=status, stdout=test.output)
+			return TestCase(name=docstring, status=status, stdout=stdout)
 		except AttributeError:
 			return TestCase(name=docstring, status=status)
