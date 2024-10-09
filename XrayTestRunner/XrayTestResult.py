@@ -37,10 +37,10 @@ class XrayTestResult(unittest.TextTestResult):
 
 		stdout=[]
 
-
-		if test.inputRequest is not None:
+		if hasattr(test, 'inputRequest'):
 			stdout.append(test.inputRequest)
-		if test.output is not None:
+
+		if hasattr(test, 'output'):
 			stdout.append(test.output)
 
 		try:
