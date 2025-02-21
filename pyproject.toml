@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling","junit_xml"]
+requires = ["hatchling","junit_xml","requests"]
 build-backend="hatchling.build"
 
 [tool.hatch.build.targets.sdist]
@@ -12,7 +12,7 @@ reproducible = true
 
 [project]
 name = "XrayTestRunner"
-version = "0.0.7"
+version = "0.0.8"
 authors = [
 	{ name = "JulianWolf", email="" }
 ]
