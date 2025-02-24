@@ -1,0 +1,33 @@
+from XrayTestRunner import LocalFileStorage, XrayTestRunnerFile
+import json
+import re
+
+def log_iteration_result(location:str, iteration:int, custom:str=""):
+	def decorator(func):
+		def wrapper(self, *args, **kwargs):
+			func(self, *args, **kwargs)
+			storagePlan=LocalFileStorage()
+			xtrf=XrayTestRunnerFile(storage=storagePlan)
+			xtrf.save(
+				name=f"{getattr(self,"_testMethodDoc").strip().split('\n')[0]} iteration {iteration+1} {custom}.json",
+				location=location,
+				data=json.dumps([self.input_request, self.output], indent=4)
+			)
+		return wrapper
+	return decorator
+
+def set_value(data: dict, key: str, val: any):
+	if val=="": return
+	if '.' in key:
+		f1, f2 = key.split('.', 1)  # Split only once
+		match = re.match(r'(\d+)\.(\w+)', f2)  # Check if f1 contains list indexing
+		
+		if match:
+			index, list_value = match.groups()
+			index = int(index)
+			
+			data[f1][index][list_value] = val  # Modify the existing dict inside list
+		else:
+			data.setdefault(f1, {})[f2] = val
+	else:
+		data[key] = val

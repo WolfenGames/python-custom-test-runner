@@ -5,6 +5,7 @@ build-backend="hatchling.build"
 [tool.hatch.build.targets.sdist]
 include = [
   "XrayTestRunner/*.py",
+  "XrayTestRunner/utilities/*.py",
 ]
 
 [tool.hatch.build]
@@ -12,7 +13,7 @@ reproducible = true
 
 [project]
 name = "XrayTestRunner"
-version = "0.0.8"
+version = "1.0.0"
 authors = [
 	{ name = "JulianWolf", email="" }
 ]
