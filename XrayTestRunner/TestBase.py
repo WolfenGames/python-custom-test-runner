@@ -93,10 +93,7 @@ class TestBase:
             "params": params
         }
 
-        if isinstance(data, dict):
-            request_kwargs["json"] = data
-        else:
-            request_kwargs["data"] = data
+        request_kwargs["data"] = data
 
         # Log input request
         self.input_request = {
