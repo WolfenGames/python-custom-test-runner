@@ -13,7 +13,7 @@ def log_iteration_result(location:str, iteration:int, custom:str=""):
 				raise ae
 			finally:
 				xtrf.save(
-					name=f"{getattr(self,"_testMethodDoc").strip().split('\n')[0]} iteration {iteration+1} {custom}.json",
+					name=f"{getattr(self,'_testMethodDoc').strip().split('\n')[0]} iteration {iteration+1} {custom}.json",
 					location=location,
 					data=json.dumps([self.input_request, self.output], indent=4)
 				)
