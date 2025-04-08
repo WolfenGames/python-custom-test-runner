@@ -86,6 +86,7 @@ class TestBase:
         headers: Optional[Dict] = None
     ) -> Response:
         request_url = f"{self.url}{endpoint}"
+        print(f"*-> Sending to [{method}] {request_url}")
         request_headers = self.header_generator.generate_headers(access_token, headers)
 
         request_kwargs = {
