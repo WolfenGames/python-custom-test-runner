@@ -81,6 +81,10 @@ class XrayTestResult(unittest.TextTestResult):
         if hasattr(test, "inputRequest"):
             stdout.append({"inputRequest": test.inputRequest})
 
+            
+        if hasattr(test, "input_request"):
+            stdout.append({"input_request": test.input_request})
+
         if hasattr(test, "output"):
             stdout.append({"output": test.output})
 
