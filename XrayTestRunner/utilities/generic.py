@@ -12,10 +12,24 @@ def log_iteration_result(location:str, iteration:int, custom:str=""):
 			except AssertionError as ae:
 				raise ae
 			finally:
+				data=[]
+
+				if hasattr(self, "inputRequest"):
+					data.append({"inputRequest": self.inputRequest})
+
+				if hasattr(self, "input_request"):
+					data.append({"input_request": self.input_request})
+
+				if hasattr(self, "output"):
+					data.append({"output": self.output})
+
+				if hasattr(self, "additional_support"):
+					data.append({"additional_support": self.additional_support})
+
 				xtrf.save(
 					name=f"{getattr(self,'_testMethodDoc').strip().split('\n')[0]} iteration {iteration+1} {custom}.json",
 					location=location,
-					data=json.dumps([self.input_request, self.output], indent=4)
+					data=json.dumps(data, indent=4)
 				)
 		return wrapper
 	return decorator
