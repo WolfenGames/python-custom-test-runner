@@ -13,13 +13,13 @@ reproducible = true
 
 [project]
 name = "XrayTestRunner"
-version = "1.0.9"
+version = "1.0.10"
 authors = [
 	{ name = "JulianWolf", email="" }
 ]
 description = "A Custom XrayTestRunner for python packages to produce output needed"
 readme = "README.md"
-requires = ">=3.9"
+requires = ">=3.12"
 classifiers = [
 	"Programming Language :: Python :: 3",
 	"License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
